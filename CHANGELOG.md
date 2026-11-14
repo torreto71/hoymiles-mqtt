@@ -4,7 +4,8 @@
 
 * Home Assistant discovery messages are repeated every 10 minutes (previously sent only once, at startup),
   so entities are restored when the MQTT broker lost its retained messages
-* port's total_production is no longer updated with data from an inverter which is off
+* port's today_production and total_production are no longer updated with data from an inverter which is off
+* today production is cleared only once per day (previously on every reading during the reset hour)
 * fix `--comm-reconnect-delay-max` overwriting `--comm-reconnect-delay`
 * Docker image: dependencies are installed in versions pinned by `poetry.lock`, the cache file is enabled
   by default (`/data/cache.json`)
