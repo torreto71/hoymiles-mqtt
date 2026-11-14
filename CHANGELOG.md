@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+* add `--cache-file` option to keep cached energy production between restarts
+* fix huge jumps in Home Assistant statistics after a restart: DTU's total_production is no longer
+  published as a partial sum when only part of inverters is on-line, and never decreases
+
 ## [0.11.0] (2025-09-02)
 
 * update pymodbus to 3.11 (via hoymiles-modbus package) to align with Home Assistant
