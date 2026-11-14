@@ -4,6 +4,8 @@
 
 * Home Assistant discovery messages are repeated every 10 minutes (previously sent only once, at startup),
   so entities are restored when the MQTT broker lost its retained messages
+* increase of port's production bigger than 1000 Wh between two readings is accepted only when confirmed
+  by 3 consecutive readings
 * port's today_production and total_production are no longer updated with data from an inverter which is off
 * today production is cleared only once per day (previously on every reading during the reset hour)
 * fix `--comm-reconnect-delay-max` overwriting `--comm-reconnect-delay`
