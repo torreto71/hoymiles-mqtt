@@ -6,6 +6,8 @@
   so entities are restored when the MQTT broker lost its retained messages
 * port's total_production is no longer updated with data from an inverter which is off
 * fix `--comm-reconnect-delay-max` overwriting `--comm-reconnect-delay`
+* Docker image: dependencies are installed in versions pinned by `poetry.lock`, the cache file is enabled
+  by default (`/data/cache.json`)
 * limit pymodbus to versions compatible with hoymiles-modbus (pymodbus 3.16.2 is not)
 * add `--cache-file` option to keep cached energy production between restarts
 * fix huge jumps in Home Assistant statistics after a restart: DTU's total_production is no longer
