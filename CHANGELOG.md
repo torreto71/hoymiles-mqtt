@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+* Home Assistant discovery messages are repeated every 10 minutes (previously sent only once, at startup),
+  so entities are restored when the MQTT broker lost its retained messages
+* fix `--comm-reconnect-delay-max` overwriting `--comm-reconnect-delay`
+* limit pymodbus to versions compatible with hoymiles-modbus (pymodbus 3.16.2 is not)
 * add `--cache-file` option to keep cached energy production between restarts
 * fix huge jumps in Home Assistant statistics after a restart: DTU's total_production is no longer
   published as a partial sum when only part of inverters is on-line, and never decreases
