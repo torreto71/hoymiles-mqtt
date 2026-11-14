@@ -132,9 +132,9 @@ the `--cache-file` option.
       --expire-after EXPIRE_AFTER
                             Defines number of seconds after which DTU or microinverter entities expire,
                             if updates are not received (for example due to communication issues). After
-                            expiry, entities become unavailable in Home Assistant.By default it is 0,
+                            expiry, entities become unavailable in Home Assistant. By default it is 0,
                             which means that entities never expire. When different than 0, the value
-                            shallbe greater than the query period. This setting does not apply to
+                            shall be greater than the query period. This setting does not apply to
                             entities that represent a total amount such as daily energy production (they
                             never expire). [env var: EXPIRE_AFTER] (default: 0)
       --cache-file CACHE_FILE

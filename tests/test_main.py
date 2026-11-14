@@ -23,3 +23,20 @@ def test_main_cache_file(monkeypatch):
     with patch('hoymiles_mqtt.__main__.run_periodic_job'), patch('hoymiles_mqtt.__main__.HassMqtt') as mock_hass_mqtt:
         main()
     assert mock_hass_mqtt.call_args.kwargs['cache_file'] == 'cache.json'
+
+
+def test_main_comm_parameters(monkeypatch):
+    """Verify that communication parameters are passed to the Modbus client."""
+    monkeypatch.setattr(
+        'sys.argv',
+        ['hoymiles_mqtt', '--mqtt-broker', 'some_broker', '--dtu-host', 'some_dtu_host']
+        + ['--comm-timeout', '5', '--comm-retries', '4']
+        + ['--comm-reconnect-delay', '1.5', '--comm-reconnect-delay-max', '60'],
+    )
+    with patch('hoymiles_mqtt.__main__.run_periodic_job'), patch('hoymiles_mqtt.__main__.HoymilesQueryJob') as job:
+        main()
+    comm_params = job.call_args.kwargs['modbus_client'].comm_params
+    assert comm_params.timeout == 5
+    assert comm_params.retries == 4
+    assert comm_params.reconnect_delay == 1.5
+    assert comm_params.reconnect_delay_max == 60
